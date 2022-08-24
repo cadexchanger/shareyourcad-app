@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section scripts{
+    <script src="~/js/index.js"></script>
+}
+
+<h1 class="text-center mb-5">Upload your CAD or 3D model and share it with anyone:</h1>
+<form id="upload-form" class="text-center">
+    <div class="row justify-content-md-center">
+        <div class="col col-md-6">
+            <input id="model-file-input" type="file" name="modelFile" class="form-control">
+        </div>
+        <div class="col-auto">
+            <button id="upload-button" class="btn btn-primary upload-btn">Upload</button>
+        </div>
+    </div>
+</form>

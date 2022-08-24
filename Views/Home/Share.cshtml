@@ -1,0 +1,61 @@
+﻿@model ShareYourCAD.Models.Share
+
+@{
+    ViewData["Title"] = Model!.FileName;
+}
+
+@section scripts{
+    <script>
+        const SHARE_ID = '@Model.Id';
+        const SHARE_STATUS = '@Model.Status.ToString()';
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@@cadexchanger/web-toolkit@1.2.5/build/cadex.bundle.js"></script>
+    <script src="~/js/share.js"></script>
+}
+
+@if (Model.Status == ShareStatus.Expired)
+{
+    <div class="row justify-content-center">
+        <p class="col-md-6 fs-5 text-center">This shared model has expired and was removed.</p>
+    </div>
+}
+else
+{
+    <div id="share-header" class="row justify-content-between">
+        <div class="col-auto">
+            <h1>@Model.FileName</h1>
+        </div>
+        <div id="share-buttons" class="col-auto">
+            <button id="copy-link-button" type="button" class="btn btn-primary">Copy link</button>
+            <a id="download-link" role="button" class="btn btn-primary"
+                href="/Share/@Model.Id/Original" download="@Model.FileName">
+                Download
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Status == ShareStatus.Ready)
+    {
+        <div class="viewer-container row">
+            <div id="model-viewer" class="col-12 h-100"></div>
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-center">
+            @if (Model.Status == ShareStatus.Error)
+            {
+                <p class="col-md-6 fs-6 mt-5 text-center">
+                    The model was not processed succesfully.
+                    You can still download the original file.
+                </p>
+            }
+            else
+            {
+                <p class="col-md-6 fs-6 mt-5 text-center">
+                    The model is still processing. Try again in a short while.
+                </p>
+            }
+        </div>
+    }
+}

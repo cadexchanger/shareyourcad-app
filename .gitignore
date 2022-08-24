@@ -1,0 +1,7 @@
+.vscode
+bin
+cadexsdk
+obj
+
+cadex_license.cs
+
