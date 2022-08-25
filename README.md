@@ -24,9 +24,9 @@ To use this example, first obtain the CAD Exchanger SDK evaluation [here](https:
 2. Place your evaluation license key in the repository root.
 2. Install [.NET SDK 6](https://dotnet.microsoft.com/en-us/download).
 3. Install [MongoDB](https://www.mongodb.com/try/download/community) locally and start a server listening on standard port (27017) or, alternatively launch a Docker container from an [official image](https://hub.docker.com/_/mongo).
-4. Run the following command to install development SSL certificate:
+4. Run the following command to install development SSL certificate (not needed for Linux):
     ```
-    > dotnet dev-certs https
+    > dotnet dev-certs https --trust
     ```
 5. Run `dotnet run` to build and run the web server.
     ```
